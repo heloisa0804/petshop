@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+//src//app/not-found.tsx
 export const metadata: Metadata = {
   title: "Contato | PetShop ",
   description: "Entre em contato conosto",
