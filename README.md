@@ -2,6 +2,10 @@
 
 Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase ( Baas - Back End as a Service).
 
+## 03_componentes-cabecalho-menu-e-modulos-de-estilo
+
+---
+
 ## 02_paginas-basicas-links-ajustes-de-layout-metadados
 
 - Criação das páginas/rotas (usando pastas e arquivo page)
