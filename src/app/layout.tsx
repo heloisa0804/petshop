@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>
+      <body className={`${roboto.variable} ${fjallaOne.variable}`}>
         <header>
           <h1>PetShop</h1>
         </header>
