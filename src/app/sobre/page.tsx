@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Petshop | Sobre ",
-  description: "Falamos sobre notícias todos os dias",
+  title: "Sobre | PetShop ",
+  description: "Temos notícias todos os dias",
 };
 
 export default function Sobre() {

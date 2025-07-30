@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Petshop | produtos ",
+  title: "Produtos | PetShop ",
   description: "Temos produtos variados de todos os tipos de animais",
 };
 export default function Produtos() {

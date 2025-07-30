@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PetShop | contatos ",
+  title: "Contato | PetShop ",
   description: "Entre em contato conosto",
 };
 export default function page() {
