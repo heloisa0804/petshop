@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Petshop | produto ",
+  title: "Petshop | produtos ",
   description: "Temos produtos variados de todos os tipos de animais",
 };
-export default function Produto() {
+export default function Produtos() {
   return (
     <section>
-      <h2>Produto</h2>
+      <h2>Produtos</h2>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit, non.
       </p>
