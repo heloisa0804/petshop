@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-
+import estilos from "./sobre.module.css";
 //src//app/not-found.tsx
 export const metadata: Metadata = {
   title: "Sobre | PetShop ",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Sobre() {
   return (
-    <section>
+    <section className={estilos.conteudo}>
       <h2>Sobre</h2>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde iste

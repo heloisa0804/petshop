@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-
+import estilos from "./contato.module.css";
 //src//app/not-found.tsx
 export const metadata: Metadata = {
   title: "Contato | PetShop ",
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 export default function page() {
   return (
-    <section>
+    <section className={estilos.conteudo}>
       <h2>Contato</h2>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione quae
