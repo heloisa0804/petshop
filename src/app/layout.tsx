@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Roboto, Fjalla_One } from "next/font/google";
 import "./globals.css";
 import { wrap } from "module";
-import Link from "next/link";
 import Cabecalho from "@/components/Cabecalho";
 import Menu from "@/components/Menu";
 

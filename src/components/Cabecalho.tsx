@@ -1,5 +1,5 @@
+//src/components/Cabecalho.tsx
 import Link from "next/link";
-import React from "react";
 import Menu from "./Menu";
 
 export default function Cabecalho() {
