@@ -2,6 +2,10 @@
 
 Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase ( Baas - Back End as a Service).
 
+## 05_home-com-lista-de-posts-a-partir-de-um-array
+
+---
+
 ## 04_melhorias-nas-paginas-e-componente-container
 
 - Adição de contúdo às pages (Sobre, Produtos, Contato)
