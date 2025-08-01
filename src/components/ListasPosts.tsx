@@ -1,7 +1,6 @@
 //src/components/ListaPosts.txs
 import { Post } from "@/types/Post";
 import estilos from "./ListaPosts.module.css";
-import { log } from "console";
 
 // Configurando um tipo para este componente e, neste tipo, definimos a prop post relacionado ela ao tipo Post criado anteriormente.
 type ListaPostsProps = {
@@ -9,8 +8,6 @@ type ListaPostsProps = {
 };
 
 export default function ListasPosts({ posts }: ListaPostsProps) {
-  console.log(posts);
-
   return (
     <div className={estilos.posts}>
       <article>
