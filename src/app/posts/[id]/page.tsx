@@ -2,7 +2,11 @@
 import Container from "@/components/Container";
 import estilos from "./detalhes-post.module.css";
 
-export default function DetalhePost() {
+type DetalhesPostProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default function DetalhePost({ params }: DetalhesPostProps) {
   return (
     <article className={estilos.conteudo}>
       <h2>Título</h2>
