@@ -1,20 +1,32 @@
-//src/app/app/[id]/page.tsx
+// src/app/app/[id]/page.tsx
 import Container from "@/components/Container";
 import estilos from "./detalhes-post.module.css";
+import { Post } from "@/types/Post";
 
+///Faça um novo fetch na Api usando este id e mostre no HTML abaixo os dados obtidos
 type DetalhesPostProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 export default async function DetalhePost({ params }: DetalhesPostProps) {
-  const { id } = await params;
-  console.log(id);
+  const { id } = params;
+
+  const resposta = await fetch(`http://localhost:2112/posts/${id}`, {
+    next: { revalidate: 0 },
+  });
+
+  if (!resposta.ok) {
+    throw new Error("Erro ao buscar o post: " + resposta.statusText);
+  }
+
+  const post: Post = await resposta.json();
+
   return (
     <article className={estilos.conteudo}>
-      <h2>Título</h2>
+      <h2>{post.titulo}</h2>
       <Container>
-        <h3>Categoria</h3>
-        <p>Descrição</p>
+        <h3>{post.categoria}</h3>
+        <p>{post.descricao}</p>
       </Container>
     </article>
   );
