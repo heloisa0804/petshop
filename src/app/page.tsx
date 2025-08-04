@@ -13,13 +13,12 @@ export default async function Home() {
     throw new Error("Erro ao buscar os posts: " + resposta.statusText);
   }
   const posts: Post[] = await resposta.json();
-  console.log(posts);
 
   return (
     <section className={estilos.conteudo}>
       <h2>Pet Notícias</h2>
       <p>Aqui você encontra as últimas notícias sobre Pets</p>
-      <ListasPosts posts={arrayPosts} />
+      <ListasPosts posts={posts} />
     </section>
   );
 }
