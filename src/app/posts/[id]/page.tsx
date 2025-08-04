@@ -8,6 +8,25 @@ type DetalhesPostProps = {
   params: { id: string };
 };
 
+export async function generateMetadata({ params }: DetalhesPostProps) {
+  const { id } = params;
+
+  const resposta = await fetch(`http://localhost:2112/posts/${id}`, {
+    next: { revalidate: 0 },
+  });
+
+  if (!resposta.ok) {
+    throw new Error("Erro ao buscar o post: " + resposta.statusText);
+  }
+
+  const post: Post = await resposta.json();
+
+  return {
+    title: post.titulo + " | Petshop",
+    description: post.descricao,
+  };
+}
+
 export default async function DetalhePost({ params }: DetalhesPostProps) {
   const { id } = params;
 
