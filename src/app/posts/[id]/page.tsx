@@ -8,9 +8,13 @@ type DetalhesPostProps = {
   params: { id: string };
 };
 
-export async function generateMetadata({ params }: DetalhesPostProps) {
-  const { id } = params;
+// A função abaixo precisa:
+// - Receber o id
+// - Executar o acesso à API usando este id e retornar o post com os dados
+// - O retorno da função DEVE SER uma Promise
+// - Não se esqueça de chamar/usar esta nova função dentro do generaTeMetadata e do Detalhes no lugar do codigo que vc irá remover.
 
+async function buscarPostPorId(id: string): Promise<Post> {
   const resposta = await fetch(`http://localhost:2112/posts/${id}`, {
     next: { revalidate: 0 },
   });
@@ -20,6 +24,12 @@ export async function generateMetadata({ params }: DetalhesPostProps) {
   }
 
   const post: Post = await resposta.json();
+  return post;
+}
+
+export async function generateMetadata({ params }: DetalhesPostProps) {
+  const { id } = await params;
+  const post = await buscarPostPorId(id);
 
   return {
     title: post.titulo + " | Petshop",
@@ -29,16 +39,7 @@ export async function generateMetadata({ params }: DetalhesPostProps) {
 
 export default async function DetalhePost({ params }: DetalhesPostProps) {
   const { id } = params;
-
-  const resposta = await fetch(`http://localhost:2112/posts/${id}`, {
-    next: { revalidate: 0 },
-  });
-
-  if (!resposta.ok) {
-    throw new Error("Erro ao buscar o post: " + resposta.statusText);
-  }
-
-  const post: Post = await resposta.json();
+  const post: Post = await buscarPostPorId(id);
 
   return (
     <article className={estilos.conteudo}>
