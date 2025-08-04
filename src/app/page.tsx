@@ -2,7 +2,6 @@
 
 import ListasPosts from "@/components/ListasPosts";
 import estilos from "./page.module.css";
-
 import { Post } from "@/types/Post";
 export default async function Home() {
   const resposta = await fetch(`http://localhost:2112/posts`, {
