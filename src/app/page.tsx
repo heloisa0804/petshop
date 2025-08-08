@@ -3,6 +3,7 @@
 import ListasPosts from "@/components/ListasPosts";
 import estilos from "./page.module.css";
 import { Post } from "@/types/Post";
+import SemPost from "@/components/SemPosts";
 export default async function Home() {
   const resposta = await fetch(`http://localhost:2112/posts`, {
     //Revalidamos o cache do next a cada requisição para garantir que os dados estejam sempre atualizados
@@ -16,6 +17,8 @@ export default async function Home() {
   return (
     <section className={estilos.conteudo}>
       <h2>Pet Notícias</h2>
+
+      {posts.length === 0 ? <SemPost /> : <ListasPosts posts={posts} />}
 
       <ListasPosts posts={[]} />
     </section>
