@@ -6,11 +6,14 @@ Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase ( Baas 
 
 - Instalação e configuração `jason server` como dependência de desenvolvedor: Para Instalar: `npm install json-server --sev-dev`
 - Ultilização do `fetch` com `async/await` na página Home para sonsumir os posts da fak-api
+- Exclusão do array de posts
 - Substituição do array fixo de posts por dados da fake-api
 - Configuração de rota dinâmica com carregamento de dados a partir da rota
 - Uso de `Promise` como tipo para a prop `params`
 - Geração de metadados dinâmicos usando a função `generaMetadata`
 - Refatoração da programação de busca de dados na fake-api usando uma função dedicada (`buscarPorId`)
+
+---
 
 ## 05_home-com-lista-de-posts-a-partir-de-um-array
 
