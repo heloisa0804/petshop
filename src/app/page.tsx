@@ -19,8 +19,6 @@ export default async function Home() {
       <h2>Pet Notícias</h2>
       {/* Renderização Condicional */}
       {posts.length === 0 ? <SemPost /> : <ListasPosts posts={posts} />}
-
-      <ListasPosts posts={[]} />
     </section>
   );
 }
