@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <section className={estilos.conteudo}>
       <h2>Pet Notícias</h2>
-
+      {/* Renderização Condicional */}
       {posts.length === 0 ? <SemPost /> : <ListasPosts posts={posts} />}
 
       <ListasPosts posts={[]} />

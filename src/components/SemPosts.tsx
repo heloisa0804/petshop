@@ -6,7 +6,7 @@ export default function SemPost() {
   return (
     <Container>
       <p className={estilos.semPosts}>
-        Nenhum post encontradp! Tente novamente mais tarde
+        Nenhum post encontrado! Tente novamente mais tarde
       </p>
     </Container>
   );
