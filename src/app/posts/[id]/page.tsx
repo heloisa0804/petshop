@@ -2,6 +2,7 @@
 import Container from "@/components/Container";
 import estilos from "./detalhes-post.module.css";
 import { Post } from "@/types/Post";
+import { notFound } from "next/navigation";
 
 ///Faça um novo fetch na Api usando este id e mostre no HTML abaixo os dados obtidos
 type DetalhesPostProps = {
@@ -18,7 +19,10 @@ async function buscarPostPorId(id: string): Promise<Post> {
   const resposta = await fetch(`http://localhost:2112/posts/${id}`, {
     next: { revalidate: 0 },
   });
-
+  if (resposta.status === 404) {
+    // Buscar a page not-found.tsx automaticamente em casa de erro 404
+    notFound();
+  }
   if (!resposta.ok) {
     throw new Error("Erro ao buscar o post: " + resposta.statusText);
   }
