@@ -8,6 +8,7 @@ import Link from "next/link";
 import FiltroCategorias from "./FiltroCategorias";
 import { useState } from "react";
 import { log } from "console";
+import SemPost from "./SemPosts";
 
 type ListaPostsProps = {
   posts: Post[];
@@ -19,9 +20,7 @@ export default function ListasPosts({ posts }: ListaPostsProps) {
 
   /* Definindo o statte com tipos null (quando não há categoria selecionada) ou string (que é p tipo para nomes/textos referentes às categorias).
   Passamos null entre parênteses indicando que por padrão não há categoria selecionada */
-  const [categoriaAtiva, setCategoriaAtiva] = useState<null | string>(
-    "comportamento"
-  );
+  const [categoriaAtiva, setCategoriaAtiva] = useState<null | string>("saude");
 
   const postFiltrados = categoriaAtiva
     ? posts.filter((post) => post.categoria === categoriaAtiva)
@@ -32,8 +31,11 @@ export default function ListasPosts({ posts }: ListaPostsProps) {
   return (
     <>
       <FiltroCategorias />
+
+      {postFiltrados.length === 0 ? <SemPost /> : null}
+
       <div className={estilos.posts}>
-        {posts.map((post) => (
+        {postFiltrados.map((post) => (
           <article key={post.id}>
             <Link href={`/posts/${post.id}`}>
               <h3>{post.titulo}</h3>
