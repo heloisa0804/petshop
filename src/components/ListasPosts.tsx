@@ -22,15 +22,16 @@ export default function ListasPosts({ posts }: ListaPostsProps) {
   Passamos null entre parênteses indicando que por padrão não há categoria selecionada */
   const [categoriaAtiva, setCategoriaAtiva] = useState<null | string>("saude");
 
+  /* Gerando uma nova lista de posts podendo ter o filtro de categoria aplicado.Caso contrário, retorna todos os pots */
   const postFiltrados = categoriaAtiva
     ? posts.filter((post) => post.categoria === categoriaAtiva)
     : posts;
 
-  console.log(postFiltrados);
-
   return (
     <>
       <FiltroCategorias />
+
+      {/*Caso Não tenha posts,renderiza SemPosts*/}
 
       {postFiltrados.length === 0 ? <SemPost /> : null}
 
