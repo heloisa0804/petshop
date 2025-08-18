@@ -7,6 +7,7 @@ import estilos from "./ListaPosts.module.css";
 import Link from "next/link";
 import FiltroCategorias from "./FiltroCategorias";
 import { useState } from "react";
+import { log } from "console";
 
 type ListaPostsProps = {
   posts: Post[];
@@ -18,7 +19,15 @@ export default function ListasPosts({ posts }: ListaPostsProps) {
 
   /* Definindo o statte com tipos null (quando não há categoria selecionada) ou string (que é p tipo para nomes/textos referentes às categorias).
   Passamos null entre parênteses indicando que por padrão não há categoria selecionada */
-  const [categoriaAtiva, setCategoriaAtiva] = useState<null | string>(null);
+  const [categoriaAtiva, setCategoriaAtiva] = useState<null | string>(
+    "comportamento"
+  );
+
+  const postFiltrados = categoriaAtiva
+    ? posts.filter((post) => post.categoria === categoriaAtiva)
+    : posts;
+
+  console.log(postFiltrados);
 
   return (
     <>
