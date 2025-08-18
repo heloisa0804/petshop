@@ -16,7 +16,9 @@ export default function ListasPosts({ posts }: ListaPostsProps) {
   /*Gerando um novo array de categorias usando map e garantindo que não há repetição de categorias usando spread e new e new Set */
   const categorias = [...new Set(posts.map((post) => post.categoria))];
 
-  const [categoriaAtiva, setCategoriaAtiva] = useState();
+  /* Definindo o statte com tipos null (quando não há categoria selecionada) ou string (que é p tipo para nomes/textos referentes às categorias).
+  Passamos null entre parênteses indicando que por padrão não há categoria selecionada */
+  const [categoriaAtiva, setCategoriaAtiva] = useState<null | string>(null);
 
   return (
     <>
