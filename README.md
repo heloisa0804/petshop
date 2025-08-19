@@ -2,6 +2,10 @@
 
 Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase ( Baas - Back End as a Service).
 
+## 09_migrando-api-para-supabase
+
+---
+
 ## 08_filtro-de-categorias
 
 ### Resumo do ciclo de comunicação da prop que passa uma função do pai (ListaPosts) para o filho (FiltroCategorias)
