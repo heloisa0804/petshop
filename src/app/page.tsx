@@ -4,17 +4,18 @@ import ListasPosts from "@/components/ListasPosts";
 import estilos from "./page.module.css";
 import { Post } from "@/types/Post";
 import SemPost from "@/components/SemPosts";
-import { notFound } from "next/navigation";
-export default async function Home() {
-  const resposta = await fetch(`http://localhost:2112/posts`, {
-    //Revalidamos o cache do next a cada requisição para garantir que os dados estejam sempre atualizados
-    next: { revalidate: 0 },
-  });
 
-  if (!resposta.ok) {
-    throw new Error("Erro ao buscar os posts: " + resposta.statusText);
+// Importando os recursos da lib supabase
+import { supabase } from "@/lib/supabase";
+
+export default async function Home() {
+  const { data, error } = await supabase.from("posts").select("*");
+
+  if (error) {
+    throw new Error("Erro ao buscar os posts: " + error.message);
   }
-  const posts: Post[] = await resposta.json();
+
+  const posts: Post[] = data;
 
   return (
     <section className={estilos.conteudo}>
