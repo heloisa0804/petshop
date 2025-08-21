@@ -1,6 +1,16 @@
+"use client";
+import { useState } from "react";
 import estilos from "./Formulario.module.css";
 
 export default function Formulario() {
+  //Estados para os textos da mensagens
+  const [mensagem, setMensagem] = useState("");
+
+  //Estados para o tipo de mensagem: sucesso ou erro
+  const [tipoMensagem, setTipoMensafem] = useState<"sucesso" | "erro" | "">("");
+
+  async function processarDados(dadosForm: FormData) {}
+
   return (
     <form action="" className={estilos.formulario}>
       <div className={estilos.campo}>
