@@ -2,6 +2,16 @@
 import { useState } from "react";
 import estilos from "./Formulario.module.css";
 import { enviarContato } from "@/lib/enviar-contato";
+import { useFormState, useFormStatus } from "react-dom";
+
+function BotaoEnviar() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? "Processando..." : "Enviar"}
+    </button>
+  );
+}
 
 export default function Formulario() {
   //Estados para os textos da mensagens
@@ -60,7 +70,7 @@ export default function Formulario() {
         ></textarea>
       </div>
       <div className={estilos.campo}>
-        <button type="submit">Enviar</button>
+        <BotaoEnviar />
       </div>
     </form>
   );
