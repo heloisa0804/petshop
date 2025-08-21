@@ -1,18 +1,37 @@
 "use client";
 import { useState } from "react";
 import estilos from "./Formulario.module.css";
+import { enviarContato } from "@/lib/enviar-contato";
 
 export default function Formulario() {
   //Estados para os textos da mensagens
   const [mensagem, setMensagem] = useState("");
 
   //Estados para o tipo de mensagem: sucesso ou erro
-  const [tipoMensagem, setTipoMensafem] = useState<"sucesso" | "erro" | "">("");
+  const [tipoMensagem, setTipoMensagem] = useState<"sucesso" | "erro" | "">("");
 
-  async function processarDados(dadosForm: FormData) {}
+  async function processarDados(dadosForm: FormData) {
+    setMensagem("");
+    setTipoMensagem("");
+
+    try {
+      enviarContato(dadosForm);
+      setMensagem("Mensagem enviada com sucesso!");
+      setTipoMensagem("sucesso");
+
+      // Reseta os campos do formúlario
+      dadosForm.set("nome", "");
+      dadosForm.set("email", "");
+      dadosForm.set("mensagem", "");
+    } catch (error: unknown) {
+      //Verificando se é um erro do type Error, para evitar erros no deploy.
+      setMensagem(error instanceof Error ? error.message : "Erro ao enviar");
+      setTipoMensagem("erro");
+    }
+  }
 
   return (
-    <form action="" className={estilos.formulario}>
+    <form action={processarDados} className={estilos.formulario}>
       <div className={estilos.campo}>
         <label htmlFor="nome">Nome</label>
         <input
