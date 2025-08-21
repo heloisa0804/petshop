@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import estilos from "./contato.module.css";
 import Container from "@/components/Container";
+import Formulario from "@/components/Formulario";
 //src//app/not-found.tsx
 export const metadata: Metadata = {
   title: "Contato | PetShop ",
@@ -18,6 +19,7 @@ export default function page() {
         </p>
 
         <p>Se preferir, use o formulário abaixo:</p>
+        <Formulario />
       </Container>
     </section>
   );
