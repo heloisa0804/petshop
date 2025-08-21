@@ -14,12 +14,18 @@ export default function Formulario() {
       </div>
       <div className={estilos.campo}>
         <label htmlFor="msg">Mensagem</label>
-        <input
+        <textarea
           name="mensagem"
           id="mensagem"
           rows={5}
           placeholder="Escreva mensagem aqui"
-        />
+        ></textarea>
+      </div>
+
+      <div className={estilos.campo}>
+        <button type="submit" className={estilos.botao}>
+          Enviar
+        </button>
       </div>
     </form>
   );
