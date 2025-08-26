@@ -25,6 +25,13 @@ export const metadata: Metadata = {
   description: "Mini portal do PetShop com notícias, produtos e muito mais",
   keywords: ["petshop", "cachorro", "gato", "banho", "tosa"],
   authors: [{ name: "Heloisa", url: "https://github.com/heloisa0804" }],
+  manifest: "/manifest.jason",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "petshop",
+    // Se tivesse ícones específicos para dispositivos Apples, você tambem colocaria aqui.
+  },
 };
 
 export default function RootLayout({
