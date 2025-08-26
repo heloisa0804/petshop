@@ -1,5 +1,3 @@
-.conteudo {
-  h2::before {
-    content: "📰 ";
-  }
+.conteudo h2::before {
+  content: "📰 ";
 }
