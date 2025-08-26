@@ -1,12 +1,12 @@
-// src/app/app/[id]/page.tsx
+// src/app/posts/[id]/page.tsx
 import Container from "@/components/Container";
 import estilos from "./detalhes-post.module.css";
 import { Post } from "@/types/Post";
-import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
-type DetalhesPostProps = {
-  params: { id: string };
+type DetalhePostProps = {
+  params: Promise<{ id: string }>;
 };
 
 async function buscarPostPorId(id: string): Promise<Post> {
@@ -16,7 +16,10 @@ async function buscarPostPorId(id: string): Promise<Post> {
     .eq("id", id)
     .single<Post>();
 
-  // Esse PGRST116 é um código interno da API Postgre usado pelo Supabase.Na prática, indica que se a query single não retornar nenhum item, ou seja, zero resultados, ele dispara esse código e com isso chamamos a função notFound (que por sua vez careega a page not -found.tsx)
+  /* Esse PGRST116 é um código interno da API Postgre usado pelo Supabase.
+  Na prática, indica que se a query single não retornar nenhum item,
+  ou seja, zero resultados, ele dispara esse código e com isso chamamos
+  a função notFound (que por sua vez carrega a page not-found.tsx). */
   if (error?.code === "PGRST116") {
     notFound();
   }
@@ -29,26 +32,28 @@ async function buscarPostPorId(id: string): Promise<Post> {
   return post;
 }
 
-export async function generateMetadata({ params }: DetalhesPostProps) {
+export async function generateMetadata({ params }: DetalhePostProps) {
   const { id } = await params;
   const post = await buscarPostPorId(id);
 
   return {
-    title: post.titulo + " | Petshop",
+    title: post.titulo + " | PetShop",
     description: post.descricao,
   };
 }
 
-export default async function DetalhePost({ params }: DetalhesPostProps) {
-  const { id } = params;
+export default async function DetalhePost({ params }: DetalhePostProps) {
+  const { id } = await params;
   const post: Post = await buscarPostPorId(id);
+
+  const { titulo, categoria, descricao } = post;
 
   return (
     <article className={estilos.conteudo}>
-      <h2>{post.titulo}</h2>
+      <h2> {titulo} </h2>
       <Container>
-        <h3>{post.categoria}</h3>
-        <p>{post.descricao}</p>
+        <h3> {categoria} </h3>
+        <p> {descricao} </p>
       </Container>
     </article>
   );
